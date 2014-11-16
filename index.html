@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Table</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet/less" type="text/css" title="table" href="css/table.less">
+    <link rel="stylesheet/less" type="text/css" title="debug" href="css/debug.less">
+    <script src="components/requirejs/require.js"></script>
+    <script>
+      require.config({
+        paths: {
+            jquery: [
+              './components/jquery/dist/jquery.min',
+              'http://code.jquery.com/jquery-2.1.1.min'
+            ],
+            jquery_mousewheel: [
+              './components/jquery-mousewheel/jquery.mousewheel.min',
+              '//cdn.jsdelivr.net/mousewheel/3.1.9/jquery.mousewheel.min'
+            ],
+            underscore: [
+              './components/underscore/underscore-min',
+              '//cdn.jsdelivr.net/underscorejs/1.7.0/underscore-min'
+            ],
+            app: 'js/app',
+            table: 'js/table',
+            dragdrop: 'js/dragdrop',
+            focusselect: 'js/focusselect',
+            resizer: 'js/resizer',
+            sampledata: 'js/sampledata',
+            utils: 'js/utils',
+            less: 'js/less',
+            debug: 'js/debug'
+        },
+        shim: {
+          'underscore': {
+            exports: '_'
+          },
+          dragdrop: {
+            deps: ['underscore']
+          },
+          focusselect: {
+            deps: ['underscore']
+          },
+          resizer: {
+            deps: ['underscore']
+          },
+          table: {
+            deps: ['dragdrop', 'focusselect', 'resizer', 'sampledata', 'utils']
+          },
+          app: {
+            deps: ['table']
+          },
+          debug: {
+            deps: ['jquery']
+          }
+        }
+      });
+      require([
+        'less',
+        'app',
+        'jquery',
+        'jquery_mousewheel',
+        'underscore',
+        'table',
+        'dragdrop',
+        'focusselect',
+        'resizer',
+        'sampledata',
+        'utils',
+        'debug'
+      ], function ($, _) {
+      });
+    </script>
+  </head>
+  <body></body>
+</html>
